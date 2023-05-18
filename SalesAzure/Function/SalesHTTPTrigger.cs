@@ -42,20 +42,24 @@ namespace SalesAzure.Function
         {
             _logger.LogInformation("Function requested to update Activity data:" + editData.ToString());
 
-            var validator = new SalesValidator();
-            var validatorResult = await validator.ValidateAsync(editData);
-            if (!validatorResult.IsValid)
-            {
-                return new BadRequestObjectResult(validatorResult.Errors);
-            }
 
             try
             {
                 var dataSelected = await _saleService.GetDataById(editData.TransactionId);
+
                 if (dataSelected == null)
                 {
-                    var newData = await _saleService.NewTransaction(_mapper.Map<SalesModel>(editData));
-                    return new OkObjectResult(newData);
+                    var validator = new SalesValidator();
+                    var validatorResult = await validator.ValidateAsync(editData);
+                    if (!validatorResult.IsValid)
+                    {
+                        return new BadRequestObjectResult(validatorResult.Errors);
+                    }
+                    else
+                    {
+                        var newData = await _saleService.NewTransaction(_mapper.Map<SalesModel>(editData));
+                        return new OkObjectResult(newData);
+                    }
                 }
                 else
                 {
