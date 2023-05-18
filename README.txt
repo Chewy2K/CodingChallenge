@@ -40,7 +40,7 @@ Steps to Set Up the SalesAzure Project:
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet",
-    "SqlServerConnection": "Server=localhost;Database=SalesDB;User Id=sa;Password=Inchcape2023;Trust Server Certificate=true;"
+    "SqlServerConnection": "Server=localhost;Database=SalesDB;User Id=sa;Password=SQLPASSWORD;Trust Server Certificate=true;"
   }
 }
 
