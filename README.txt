@@ -36,7 +36,7 @@ Steps to Set Up the SalesAzure Project:
    
    4.1 If you encounter an error while updating Database simply modify the connection string in "SalesDBContext.cs".
 
-5. Add local.settings.json
+5. Add local.settings.json in SalesAzure project.
 {
     "IsEncrypted": false,
   "Values": {
