@@ -43,7 +43,9 @@ namespace SalesService
                 sales.TransactionId = newData.TransactionId;
                 sales.TransactionDate = DateTime.Now.ToUniversalTime();
                 sales.Amount = newData.Amount;
-                sales.LoyaltyCardNumber = newData.LoyaltyCardNumber;
+
+                if (string.IsNullOrEmpty(sales.LoyaltyCardNumber))
+                    sales.LoyaltyCardNumber = newData.LoyaltyCardNumber;
 
                 _ctx.SalesData.Update(sales);
                 await _ctx.SaveChangesAsync();
