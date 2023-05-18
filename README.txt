@@ -34,4 +34,16 @@ Steps to Set Up the SalesAzure Project:
      
    - These commands will generate the necessary database schema based on the entity models.
 
+5. Add local.settings.json
+{
+    "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "SqlServerConnection": "Server=localhost;Database=SalesDB;User Id=sa;Password=Inchcape2023;Trust Server Certificate=true;"
+  }
+}
+
+   **REMEMBER if you can't still connect to Database try replacing localhost with your local DB server name.
+
 By following these steps, you will be able to set up the SalesAzure project successfully.
