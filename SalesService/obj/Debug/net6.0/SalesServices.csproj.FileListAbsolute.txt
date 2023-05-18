@@ -1,0 +1,15 @@
+C:\Users\Bobby.Elivera\Desktop\Trial\SalesAzure\SalesService\bin\Debug\net6.0\SalesServices.deps.json
+C:\Users\Bobby.Elivera\Desktop\Trial\SalesAzure\SalesService\bin\Debug\net6.0\SalesServices.dll
+C:\Users\Bobby.Elivera\Desktop\Trial\SalesAzure\SalesService\bin\Debug\net6.0\SalesServices.pdb
+C:\Users\Bobby.Elivera\Desktop\Trial\SalesAzure\SalesService\obj\Debug\net6.0\SalesServices.csproj.AssemblyReference.cache
+C:\Users\Bobby.Elivera\Desktop\Trial\SalesAzure\SalesService\obj\Debug\net6.0\SalesServices.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bobby.Elivera\Desktop\Trial\SalesAzure\SalesService\obj\Debug\net6.0\SalesServices.AssemblyInfoInputs.cache
+C:\Users\Bobby.Elivera\Desktop\Trial\SalesAzure\SalesService\obj\Debug\net6.0\SalesServices.AssemblyInfo.cs
+C:\Users\Bobby.Elivera\Desktop\Trial\SalesAzure\SalesService\obj\Debug\net6.0\SalesServices.csproj.CoreCompileInputs.cache
+C:\Users\Bobby.Elivera\Desktop\Trial\SalesAzure\SalesService\obj\Debug\net6.0\SalesServices.dll
+C:\Users\Bobby.Elivera\Desktop\Trial\SalesAzure\SalesService\obj\Debug\net6.0\refint\SalesServices.dll
+C:\Users\Bobby.Elivera\Desktop\Trial\SalesAzure\SalesService\obj\Debug\net6.0\SalesServices.pdb
+C:\Users\Bobby.Elivera\Desktop\Trial\SalesAzure\SalesService\obj\Debug\net6.0\ref\SalesServices.dll
+C:\Users\Bobby.Elivera\Desktop\Trial\SalesAzure\SalesService\bin\Debug\net6.0\SalesData.dll
+C:\Users\Bobby.Elivera\Desktop\Trial\SalesAzure\SalesService\bin\Debug\net6.0\SalesData.pdb
+C:\Users\Bobby.Elivera\Desktop\Trial\SalesAzure\SalesService\obj\Debug\net6.0\SalesServices.csproj.CopyComplete
