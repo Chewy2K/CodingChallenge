@@ -33,6 +33,8 @@ Steps to Set Up the SalesAzure Project:
      Update-Database
      
    - These commands will generate the necessary database schema based on the entity models.
+   
+   4.1 If you encounter an error while updating Database simply modify the connection string in "SalesDBContext.cs".
 
 5. Add local.settings.json
 {
