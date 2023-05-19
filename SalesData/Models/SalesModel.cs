@@ -12,10 +12,12 @@ namespace SalesData.Models
         [Key]
         public int Id { get; set; }
         public int BranchId { get; set; }
-        [Required]
+        [Required, StringLength(30)]
         public string TransactionId { get; set; }
         public DateTime TransactionDate { get; set; }
+        [DataType("decimal(16 ,3)")]
         public float Amount { get; set; }
+        [StringLength(30)]
         public string? LoyaltyCardNumber { get; set; }
     }
 }
