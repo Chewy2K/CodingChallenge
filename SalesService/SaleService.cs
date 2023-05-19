@@ -39,28 +39,25 @@ namespace SalesService
         {
             try
             {
-                if(newData.BranchId != 0)
-                {
-                    sales.BranchId = newData.BranchId;
-                }
-
-                sales.Amount = newData.Amount;
-
-                if (newData.LoyaltyCardNumber != null)
-                {
-                    sales.LoyaltyCardNumber = newData.LoyaltyCardNumber;
-                }
-                else if(string.IsNullOrEmpty(sales.LoyaltyCardNumber))
-                    sales.LoyaltyCardNumber = newData.LoyaltyCardNumber;
-
                 bool hasChanges = _ctx.Entry(sales).Properties.Any(p => p.IsModified);
                 if(hasChanges)
                 {
-                    sales.TransactionDate = DateTime.Now.ToUniversalTime();
-                }
+                    if (newData.BranchId != 0)
+                    {
+                        sales.BranchId = newData.BranchId;
+                    }
 
-                _ctx.SalesData.Update(sales);
-                await _ctx.SaveChangesAsync();
+                    sales.Amount = newData.Amount;
+                    sales.LoyaltyCardNumber = newData.LoyaltyCardNumber;
+                    sales.TransactionDate = DateTime.Now.ToUniversalTime();
+
+                    _ctx.SalesData.Update(sales);
+                    await _ctx.SaveChangesAsync();
+                }
+                else
+                {
+                    Console.WriteLine("There is no changes in Transaction Data.");
+                }
             }
             catch (Exception ex)
             {
@@ -80,6 +77,18 @@ namespace SalesService
             {
                 throw new ArgumentException("Unable to retrieve data, " + ex.Message);
             }
+        }
+
+        //Checking if update happen
+        public async Task<bool> CheckTransactionChanges(SalesModel newData, SalesModel existingData)
+        {
+            // Compare the properties of newData and existingData to check for changes
+            bool hasChanges = newData.BranchId != existingData.BranchId ||
+            newData.TransactionId != existingData.TransactionId ||
+            newData.Amount != existingData.Amount ||
+            newData.LoyaltyCardNumber != existingData.LoyaltyCardNumber;
+            
+            return hasChanges;
         }
     }
 }

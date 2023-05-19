@@ -53,7 +53,7 @@ namespace SalesAzure.Function
                     var validatorResult = await validator.ValidateAsync(editData);
                     if (!validatorResult.IsValid)
                     {
-                        return new BadRequestObjectResult(validatorResult.Errors);
+                        return new BadRequestObjectResult("Error \n" + validatorResult);
                     }
                     else
                     {
@@ -64,15 +64,25 @@ namespace SalesAzure.Function
                 else
                 {
                     var salesData = await _saleService.GetDataById((string)dataSelected.TransactionId);
-
                     var data = _mapper.Map<SalesModel>(editData);
-                    await _saleService.UpdateTransaction(data, salesData);
-                    return new OkObjectResult("Transaction data is successfully updated.");
+
+                    // Check if there are changes in the transaction data
+                    bool hasChanges = await _saleService.CheckTransactionChanges(data, salesData);
+                    if (hasChanges)
+                    {
+                        await _saleService.UpdateTransaction(data, salesData);
+                        return new OkObjectResult("Transaction data is successfully updated.");
+                    }
+                    else
+                    {
+                        return new OkObjectResult("There is no changes in Transaction Data.");
+                    }
                 }
             }
             catch (System.Exception ex)
             {
-                return new BadRequestObjectResult("Unable to create or access data," + ex.Message);
+                _logger.LogError(ex, "Unable to update data"); 
+                return new BadRequestObjectResult("Unable to create or access data. " + ex.Message);
             }
         }
     }
