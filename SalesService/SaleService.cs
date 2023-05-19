@@ -39,9 +39,11 @@ namespace SalesService
         {
             try
             {
-                sales.BranchId = newData.BranchId;
-                sales.TransactionId = newData.TransactionId;
-                sales.TransactionDate = DateTime.Now.ToUniversalTime();
+                if(newData.BranchId != 0)
+                {
+                    sales.BranchId = newData.BranchId;
+                }
+
                 sales.Amount = newData.Amount;
 
                 if (newData.LoyaltyCardNumber != null)
@@ -50,6 +52,12 @@ namespace SalesService
                 }
                 else if(string.IsNullOrEmpty(sales.LoyaltyCardNumber))
                     sales.LoyaltyCardNumber = newData.LoyaltyCardNumber;
+
+                bool hasChanges = _ctx.Entry(sales).Properties.Any(p => p.IsModified);
+                if(hasChanges)
+                {
+                    sales.TransactionDate = DateTime.Now.ToUniversalTime();
+                }
 
                 _ctx.SalesData.Update(sales);
                 await _ctx.SaveChangesAsync();

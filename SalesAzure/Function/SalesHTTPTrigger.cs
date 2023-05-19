@@ -38,7 +38,7 @@ namespace SalesAzure.Function
         [OpenApiRequestBody(contentType: "application/json", bodyType: typeof(SalesDTO), Description = "Parameters", Required = true)]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(SalesDTO), Description = "The OK response")]
         public async Task<IActionResult> EditSalesData(
-           [HttpTrigger(AuthorizationLevel.Function, "post", Route = "salesData")] SalesDTO editData)
+           [HttpTrigger(AuthorizationLevel.Function, "post", Route = "sales-data")] SalesDTO editData)
         {
             _logger.LogInformation("Function requested to update Activity data:" + editData.ToString());
 
@@ -58,7 +58,7 @@ namespace SalesAzure.Function
                     else
                     {
                         var newData = await _saleService.NewTransaction(_mapper.Map<SalesModel>(editData));
-                        return new OkObjectResult(newData);
+                        return new OkObjectResult("New transaction data is successfully created.");
                     }
                 }
                 else
@@ -67,7 +67,7 @@ namespace SalesAzure.Function
 
                     var data = _mapper.Map<SalesModel>(editData);
                     await _saleService.UpdateTransaction(data, salesData);
-                    return new OkObjectResult(data);
+                    return new OkObjectResult("Transaction data is successfully updated.");
                 }
             }
             catch (System.Exception ex)
